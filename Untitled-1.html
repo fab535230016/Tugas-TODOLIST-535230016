@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Password</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="todo-container">
+
+        <div class="photo-box">
+            <img src="foto/asdasd.jpg" alt="Your Photo">
+        </div>
+
+        <div class="identity">
+            <h2>Fablius Maxleon</h2>
+            <h3>NIM: 535230016</h3>
+        </div>
+
+        <h3>TODO-LIST:</h3>
+        <div class="input">
+            <input type="text" class="form-control" placeholder="New Task">
+            <div class="add"><i class="material-icons">add</i></div>
+        </div>
+
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="completed">Completed</button>
+            <button class="filter-btn" data-filter="incomplete">Incomplete</button>
+        </div>
+
+        <ul class="todo-list">
+            <li>
+                <div class="left-cont">
+                    <input type="checkbox" class="checkbox" id="check-1">
+                    <label for="check-1"></label>
+                    <span>Task-1</span>
+                </div>
+                <span class="remove"><i class="material-icons">delete</i></span>
+            </li>
+        </ul>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            var count = 1; 
+
+            $(".add").click(function() {
+                var inputval = $(".form-control").val();
+                if (inputval != '') {
+                    count++;
+                    $(".todo-list").append('<li><div class="left-cont"><input type="checkbox" id="check-' + count + '"><label for="check-' + count + '"></label><span>' + inputval + '</span></div><span class="remove"><i class="material-icons">delete</i></span></li>');
+                }
+                $(".form-control").val('');
+            });
+
+            $(document).on('change', 'input[type="checkbox"]', function() {
+                if ($(this).is(':checked')) {
+                    $(this).closest("li").children(".remove").addClass("active");
+                } else {
+                    $(this).closest("li").children(".remove").removeClass("active");
+                }
+            });
+
+            $(document).on('click', '.remove', function() {
+                $(this).parent().remove();
+            });
+
+            // fungsi filter utk membedakan yang sudah,belum,dan overall. 
+            // Also karena dirasa ini sudah membantu dalam membedakan saya tidak membuat garis coret pada text (?) seperti yang disuruh di ppt
+            $(".filter-btn").click(function() {
+                var filter = $(this).data("filter");
+                
+                $(".filter-btn").removeClass("active");
+                $(this).addClass("active");
+
+                if (filter === "all") {
+                    $(".todo-list li").show();
+                } else if (filter === "completed") {
+                    $(".todo-list li").has("input:checked").show();
+                    $(".todo-list li").not(":has(input:checked)").hide();
+                } else {
+                    $(".todo-list li").has("input:not(:checked)").show();
+                    $(".todo-list li").has("input:checked").hide();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

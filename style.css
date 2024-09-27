@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Inconsolata', monospace; 
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: rgb(127, 115, 151);
+}
+
+.todo-container {
+    width: 40%;
+    text-align: center;
+}
+
+.photo-box {
+    margin-bottom: 20px;
+}
+
+.photo-box img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid white;
+}
+
+.identity h2, .identity p, h3 {
+    color: white;
+    font-family: 'Inconsolata', monospace;
+    margin-bottom: 5px;
+}
+
+.identity p {
+    color: aquamarine;
+    margin-bottom: 20px;
+}
+
+
+h3 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.input {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    align-items: center;
+}
+
+.input .form-control {
+    background: transparent;
+    border: 1px solid rgba(245, 245, 245, 0.2);
+    height: 50px;
+    border-radius: 5px;
+    width: 90%;
+    padding: 0 20px;
+    font-size: 16px;
+    color: rgb(54, 54, 54);
+    box-shadow: inset -3px -3px 6px rgba(12, 8, 12, 0.6), 
+                inset 3px 3px 6px rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.input .form-control:focus {
+    outline: none;
+    border-color: rgba(245, 245, 245, 0.4);
+    box-shadow: inset -4px -4px 8px rgba(12, 8, 12, 0.7), 
+                inset 4px 4px 8px rgba(255, 255, 255, 0.2);
+}
+
+.add .material-icons {
+    background: lightgoldenrodyellow;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: brown;
+    border-radius: 50%;
+    margin-left: 15px;
+    cursor: pointer;
+    font-size: 30px;
+}
+
+.todo-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    color: aquamarine;
+    background:rgb(112, 98, 141);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 15px;
+    box-shadow: 0px 5px 10px rgb(0, 0, 0, 0.55);
+}
+
+.left-cont {
+    display: flex;
+    align-items: center;
+}
+
+.left-cont input[type="checkbox"] {
+    display: none;
+}
+
+.left-cont label {
+    position: relative;
+    cursor: pointer;
+    padding-left: 30px;
+    font-size: 18px;
+    user-select: none;
+}
+
+.left-cont label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border: 2px solid rgb(102, 95, 95);
+    border-radius: 3px;
+}
+
+.left-cont input[type="checkbox"]:checked + label:before {
+    background-color: orange;
+    border-color: orange;
+}
+
+.left-cont input[type="checkbox"]:checked + label:after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+}
+
+.remove {
+    color: rgb(219, 57, 57);
+    cursor: pointer;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    transition: 0.5s;
+}
+
+.remove.active {
+    transform: translateX(0px);
+    transition: 0.5s;
+}
+
+.remove i {
+    font-size: 24px;
+}
+
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.filter-btn {
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+}
+
+.filter-btn.active {
+    background-color: lightblue;
+}
